@@ -13,7 +13,7 @@ namespace TopTenPops
             var countries = csvReader.ReadFirstNCountries(10);
             foreach (var country in countries)
             {
-                System.Console.WriteLine(country.Name);
+                System.Console.WriteLine($"{country.FormattedPopulation}   {country.Name}");
             }
         }
     }

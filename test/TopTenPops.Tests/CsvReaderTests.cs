@@ -46,5 +46,17 @@ namespace TopTenPops.Tests
             Assert.IsType<Country>(countries[0]);
             Assert.Equal(expectedLength, countries.Length);
         }
+
+        [Fact]
+        public void ReadAllCountries_Test()
+        {
+            //Arrange
+            var csvReader = GetCsvReader();
+            int expectedLength = 217;
+            //Act
+            var countries = csvReader.ReadAllCountries();
+            //Assert
+            Assert.Equal(expectedLength, countries.Count);
+        }
     }
 }

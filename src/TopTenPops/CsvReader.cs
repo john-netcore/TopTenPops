@@ -16,6 +16,11 @@ namespace TopTenPops
             Path = System.IO.Path.Combine(path);
         }
 
+        public CsvReader(string path)
+        {
+            Path = path;
+        }
+
         public Country[] ReadFirstNCountries(int nCountries)
         {
             Country[] countries = new Country[nCountries];

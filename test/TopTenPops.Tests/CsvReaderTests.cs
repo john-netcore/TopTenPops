@@ -22,7 +22,7 @@ namespace TopTenPops.Tests
         }
 
         [Fact]
-        public void ReadFirstZeroCountries_Test()
+        public void ReadZeroCountries_Test()
         {
             //Arrange
             var csvReader = GetCsvReader();
@@ -31,6 +31,19 @@ namespace TopTenPops.Tests
             var countries = csvReader.ReadFirstNCountries(0);
             //Assert
             Assert.NotNull(countries);
+            Assert.Equal(expectedLength, countries.Length);
+        }
+
+        [Fact]
+        public void ReadFirstCountry_Test()
+        {
+            //Arrange
+            var csvReader = GetCsvReader();
+            int expectedLength = 1;
+            //Act
+            var countries = csvReader.ReadFirstNCountries(1);
+            //Assert
+            Assert.IsType<Country>(countries[0]);
             Assert.Equal(expectedLength, countries.Length);
         }
     }

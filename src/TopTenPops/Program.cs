@@ -32,7 +32,7 @@ namespace TopTenPops
                         return;
                     }
                 }
-                System.Console.WriteLine($"{countries[i].Name}:   ${countries[i].Population}");
+                System.Console.WriteLine($"{i + 1} {countries[i].Name}:   ${countries[i].Population}");
             }
         }
     }

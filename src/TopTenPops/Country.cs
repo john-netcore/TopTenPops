@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 
 namespace TopTenPops
 {
@@ -13,8 +12,7 @@ namespace TopTenPops
         {
             get
             {
-                // return String.Format("{0:### ### ### ###.##}", Population);
-                return Population.ToString("C", formatInfo);
+                return String.Format("{0:### ### ### ###}", Population);
             }
         }
         public Country(string name, string code, string region, int population)
@@ -23,11 +21,7 @@ namespace TopTenPops
             this.Code = code;
             this.Region = region;
             this.Population = population;
-
-            formatInfo.CurrencyGroupSeparator = " ";
-            formatInfo.CurrencySymbol = string.Empty;
         }
 
-        private readonly NumberFormatInfo formatInfo = new NumberFormatInfo();
     }
 }

@@ -38,6 +38,16 @@ namespace TopTenPops.Tests
         }
 
         [Fact]
+        public void GetCountriesByRegionWithNoneExistingRegion_Test()
+        {
+            //Arrange
+            var csvReader = GetCsvReader();
+            string region = "Foo";
+            //Assert
+            Assert.Throws<KeyNotFoundException>(() => csvReader.GetCountries(region));
+        }
+
+        [Fact]
         public void ReadZeroCountries_Test()
         {
             //Arrange

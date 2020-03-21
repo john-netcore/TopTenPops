@@ -25,6 +25,19 @@ namespace TopTenPops.Tests
         }
 
         [Fact]
+        public void GetCountriesByRegion_Test()
+        {
+            //Arrange
+            var csvReader = GetCsvReader();
+            string region = "Africa";
+            int expected = 56;
+            //Act
+            var countries = csvReader.GetCountries(region);
+            //Assert
+            Assert.Equal(expected, countries.Count);
+        }
+
+        [Fact]
         public void ReadZeroCountries_Test()
         {
             //Arrange

@@ -13,15 +13,14 @@ namespace TopTenPops
             set;
         }
 
-        public CsvReader(string[] path)
+        public CsvReader(string[] path) : this(System.IO.Path.Combine(path))
         {
-            Path = System.IO.Path.Combine(path);
-            ReadCountriesFromCsvFile();
         }
 
         public CsvReader(string path)
         {
             Path = path;
+            ReadCountriesFromCsvFile();
         }
 
         private void ReadCountriesFromCsvFile()

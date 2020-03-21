@@ -1,12 +1,13 @@
+using System.Collections.Generic;
 using Xunit;
 
 namespace TopTenPops.Tests
 {
     public class CsvReaderTests
     {
+        private string path = "/Users/johnlundgren/Development/netProjects/TopTenPops/src/TopTenPops/data/countries.csv";
         private CsvReader GetCsvReader()
         {
-            string path = "/Users/johnlundgren/Development/netProjects/TopTenPops/src/TopTenPops/countries.csv";
             return new CsvReader(path);
         }
 
@@ -16,9 +17,11 @@ namespace TopTenPops.Tests
             //Arrange
             CsvReader csvReader = null;
             //Act
-            csvReader = new CsvReader(new string[] { "whatever" });
+            csvReader = new CsvReader(path);
             //Assert
             Assert.IsType<CsvReader>(csvReader);
+            Assert.IsType<Dictionary<string, List<Country>>>(csvReader.dict);
+            Assert.True(csvReader.dict.Count > 0);
         }
 
         [Fact]

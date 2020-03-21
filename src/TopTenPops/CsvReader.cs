@@ -16,11 +16,32 @@ namespace TopTenPops
         public CsvReader(string[] path)
         {
             Path = System.IO.Path.Combine(path);
+            ReadCountriesFromCsvFile();
         }
 
         public CsvReader(string path)
         {
             Path = path;
+        }
+
+        private void ReadCountriesFromCsvFile()
+        {
+            using (var reader = new StreamReader(Path))
+            {
+                //Title line
+                reader.ReadLine();
+
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    var country = ReadCountryFromCsvLine(line);
+                    if (!dict.ContainsKey(country.Region))
+                    {
+                        dict.Add(country.Region, new List<Country>());
+                    }
+                    dict[country.Region].Add(country);
+                }
+            }
         }
 
         public Country[] ReadFirstNCountries(int nCountries)
@@ -74,5 +95,7 @@ namespace TopTenPops
 
             return new Country(name, code, continent, population);
         }
+
+        public Dictionary<string, List<Country>> dict = new Dictionary<string, List<Country>>();
     }
 }

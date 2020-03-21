@@ -43,6 +43,11 @@ namespace TopTenPops
             }
         }
 
+        public List<Country> GetCountries(string region)
+        {
+            return dict[region];
+        }
+
         public Country[] ReadFirstNCountries(int nCountries)
         {
             Country[] countries = new Country[nCountries];

@@ -13,6 +13,14 @@ namespace TopTenPops
             set;
         }
 
+        public ICollection<string> Regions
+        {
+            get
+            {
+                return dict.Keys;
+            }
+        }
+
         public CsvReader(string[] path) : this(System.IO.Path.Combine(path))
         {
         }
